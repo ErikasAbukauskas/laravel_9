@@ -32,18 +32,14 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        // $category = Category::create($request->validated());
 
-        // $image = $request->file('image')->store('public/categories');
+        $category = Category::create($request->validated());
 
-        // $category->image;
-
-        $image = $request->file('image')->store('public/categories');
-        Category::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $image,
-        ]);
+        if ($request->hasFile('image')) {
+            $category->update([
+                'image' => $request->file('image')->store('public/images')
+            ]);
+        }
 
         return to_route('admin.categories.index');
 

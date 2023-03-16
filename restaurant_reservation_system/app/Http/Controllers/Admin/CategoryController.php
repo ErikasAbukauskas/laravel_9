@@ -34,13 +34,13 @@ class CategoryController extends Controller
     {
 
         $category = Category::create($request->validated());
-        $category->addMediaFromRequest('image')->toMediaCollection();
+            // ->addMediaFromRequest('image')->toMediaCollection();
 
-        // if ($request->hasFile('image')) {
-        //     $category->update([
-        //         'image' => $request->file('image')->store('public/images')
-        //     ]);
-        // }
+        if ($request->hasFile('image')) {
+            $category->update([
+                'image' => $request->file('image')->store('public/images')
+            ]);
+        }
 
         return to_route('admin.categories.index');
 

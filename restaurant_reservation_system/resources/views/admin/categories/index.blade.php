@@ -10,6 +10,7 @@
             <div class="flex justify-end m-2 p-2">
                 <a href="{{route('admin.categories.create')}}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg">New Category</a>
             </div>
+            <div class="flex flex-col">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -44,7 +45,7 @@
                                     {{$category->name}}
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img src="{{$category->getMedia('avatars')}}">
+                                    <img src="{{Storage::url($category->image)}}" class="w-16 h-16 rounded">
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{$category->description}}
@@ -66,6 +67,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
 
         </div>
     </div>
